@@ -1,5 +1,6 @@
 IMX AUTHORIZATION EDUCATION NOTES
 
+
 Source CVS: https://cvs:8080/viewvc/cvs/pl/pack/imxauthorization.pck?view=log
 Specification: https://ssmt.codixfr.private/ssmt/src/index.php?getfile&docid=1811&lng=EN
 
