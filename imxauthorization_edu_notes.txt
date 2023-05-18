@@ -3,8 +3,8 @@ IMX AUTHORIZATION EDUCATION NOTES
 
 Source CVS: https://cvs:8080/viewvc/cvs/pl/pack/imxauthorization.pck?view=log
 Specification: https://ssmt.codixfr.private/ssmt/src/index.php?getfile&docid=1811&lng=EN
-
-I. General
+  
+I. General  
 1.	What is the purpose of the package?
 
 It provides the iMX authentication, token managment, and OTP issuuing
