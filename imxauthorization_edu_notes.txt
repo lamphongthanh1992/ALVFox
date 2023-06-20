@@ -1,4 +1,4 @@
-Test precommit 
+Test commit MSG
 Thanh Test File 222
 
 Thank you
