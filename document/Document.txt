@@ -1,0 +1,13 @@
+MAC: chay Java 15
+	database: Stingsting2802@
+Window: chay 17
+	database: root
+
+
+
+
+File Properties add nhieu lan
+chinh chu properties sang tieng viet
+chinh cart menu
+canh thoi gian timeout cua session
+default page
