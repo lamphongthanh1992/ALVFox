@@ -37,4 +37,13 @@ public class UserDAO {
 		   return null;
 		}
 	 }
+	 
+	 public int createUser(User user) {
+		 
+		 int isSuccess = jdbcTemplate.update(
+				    "INSERT INTO USER (username, password, phone,email, first_name,last_name) VALUES (?, ?,?,?,?,?)",
+				    user.getUsername(), user.getPassword(),user.getPhone(),user.getEmail(),user.getFirst_name(),user.getLast_name()
+				);
+		 return isSuccess;
+	 }
 }

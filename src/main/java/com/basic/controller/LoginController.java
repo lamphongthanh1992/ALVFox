@@ -1,5 +1,6 @@
 package com.basic.controller;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +16,6 @@ import com.basic.entities.User;
 import com.basic.utils.GetPropertiesUtils;
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
 	
 	@Autowired
@@ -24,26 +24,46 @@ public class LoginController {
 	@Autowired
 	private UserDAO userDAO;
 	
-	@RequestMapping("")
+	@RequestMapping("/login")
 	public String viewHomePage(Model model) {
 		System.out.println("test2");
+		model.addAttribute("properties", properties);
 		User user = new User();
 		model.addAttribute("user", user);
 		return "login";
 	}
 	
-	 @RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value={"/login"},method = RequestMethod.POST)
 	public String checkLogin(@ModelAttribute("User") User user, Model model,HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		model.addAttribute("properties", properties);
 		User userData = userDAO.findUser(user.getUsername(),user.getPassword());
 		if (userData != null) {
 			session.setAttribute("user",userData);
-			model.addAttribute("properties", properties);
 			return "redirect:index.html";
 		} else {
+			model.addAttribute("errorMessage", "Invalid User Or Password");
 			return "login";
 		}
 		
 	}
+	 @RequestMapping("/register")
+	 public String register(Model model) {
+		 model.addAttribute("properties", properties);
+		 return "register";
+	 }
+	 
+	 
+	 @RequestMapping(value={"/register"},method = RequestMethod.POST)
+		public String register(@ModelAttribute("User") User user, Model model,HttpServletRequest request) {
+		 model.addAttribute("properties", properties);
+		 int isSucess = userDAO.createUser(user);
+		 if (isSucess == 1) {
+			 return "redirect:login";
+		 } else {
+		 return "register";
+		 }
+			
+		}
 
 }
