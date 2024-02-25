@@ -3,7 +3,7 @@ MAC: chay Java 15
 Window: chay 17
 	database: root
 
-
+https://fabric.inc/blog/commerce/shopping-cart-database-design
 
 
 File Properties add nhieu lan
