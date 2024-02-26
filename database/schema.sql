@@ -165,4 +165,5 @@ INSERT INTO `demo-spring-mvc-jdbc`.`category` (`type`, `notes`) VALUES ('Áo', '
 INSERT INTO `demo-spring-mvc-jdbc`.`category` (`type`, `notes`) VALUES ('Quần', 'phân loại quần');
 INSERT INTO `demo-spring-mvc-jdbc`.`category` (`type`) VALUES ('Phụ Kiện');
 INSERT INTO `demo-spring-mvc-jdbc`.`product` (`name`, `desc`, `SKU`, `category_id`, `price`, `discount_id`, `created_at`) VALUES ('Quan Jean', 'Quan Jean Denim', 'sku quan', '3', '20000', '0', CURRENT_TIMESTAMP);
+INSERT INTO `demo-spring-mvc-jdbc`.`product` (`name`, `desc`, `SKU`, `category_id`, `price`, `discount_id`, `created_at`) VALUES ('Áo thun', 'Áo thun', 'sku áo', '2', '1000', '0', CURRENT_TIMESTAMP);
 

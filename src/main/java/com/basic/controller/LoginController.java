@@ -25,14 +25,11 @@ public class LoginController {
 	private UserDAO userDAO;
 
 	@RequestMapping("/login")
-	public String viewHomePage(Model model,@RequestParam(name="currentPage",required=false) String currentPage) {
-		System.out.println("test2: " + currentPage);
+	public String viewHomePage(Model model) {
+		System.out.println("test2: ");
 		model.addAttribute("properties", properties);
 		User user = new User();
 		model.addAttribute("user", user);
-		if (currentPage != null) {
-			
-		}
 		return "login";
 	}
 
@@ -41,11 +38,18 @@ public class LoginController {
 		HttpSession session = request.getSession();
 		model.addAttribute("properties", properties);
 		User userData = userDAO.findUser(user.getUsername(), user.getPassword());
-		String redirectPage = "index.html";
+	
 		System.out.println("redirtectPage: "+currentPage);
 		if (userData != null) {
 			session.setAttribute("user", userData);
-			return "redirect:index.html";
+			
+			if ((currentPage == null) || (currentPage.equals("null"))) {
+				return "redirect:index.html";
+			} else { 
+				System.out.println("redirtectPage2: "+currentPage);
+				return "redirect:" + currentPage;
+			}
+			
 		} else {
 			model.addAttribute("errorMessage", "Invalid User Or Password");
 			return "login";
