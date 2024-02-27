@@ -4,7 +4,7 @@ Window: chay 17
 	database: root
 
 https://fabric.inc/blog/commerce/shopping-cart-database-design
-
+reuse template 
 
 File Properties add nhieu lan
 chinh chu properties sang tieng viet

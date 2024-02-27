@@ -1,10 +1,6 @@
 package com.basic.controller;
 
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Currency;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +24,6 @@ public class ProductController {
 	public String viewHomePage(Model model) {
 		model.addAttribute("properties", properties);
 		List<Product> list = productDAO.list();
-
 		
 		TextUtils textUtils = new TextUtils();
 		model.addAttribute("listProduct",list);

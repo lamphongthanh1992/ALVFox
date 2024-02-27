@@ -32,6 +32,21 @@ public class LoginController {
 		model.addAttribute("user", user);
 		return "login";
 	}
+	
+	public String checkisAlreadyLogin(User userData, String currentPage,Model model, HttpSession session) {
+		if (userData != null) {
+			session.setAttribute("user", userData);
+			if ((currentPage == null) || (currentPage.equals("null"))) {
+				return "redirect:index.html";
+			} else { 
+				System.out.println("redirtectPage2: "+currentPage);
+				return "redirect:" + currentPage;
+			}
+		}
+		
+		model.addAttribute("errorMessage", "Invalid User Or Password");
+		return "login";
+	}
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
 	public String checkLogin(@ModelAttribute("User") User user, Model model, HttpServletRequest request,@RequestParam(name="currentPage",required=false) String currentPage) {
@@ -39,22 +54,8 @@ public class LoginController {
 		model.addAttribute("properties", properties);
 		User userData = userDAO.findUser(user.getUsername(), user.getPassword());
 	
-		System.out.println("redirtectPage: "+currentPage);
-		if (userData != null) {
-			session.setAttribute("user", userData);
-			
-			if ((currentPage == null) || (currentPage.equals("null"))) {
-				return "redirect:index.html";
-			} else { 
-				System.out.println("redirtectPage2: "+currentPage);
-				return "redirect:" + currentPage;
-			}
-			
-		} else {
-			model.addAttribute("errorMessage", "Invalid User Or Password");
-			return "login";
-		}
-
+		System.out.println("redirtectPage: " + currentPage);
+		return checkisAlreadyLogin(userData, currentPage, model, session);
 	}
 
 	@RequestMapping("/register")
