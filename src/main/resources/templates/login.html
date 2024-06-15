@@ -77,11 +77,13 @@
         
         <div class="row block-9">
           <div class="col-md-6 order-md-last d-flex">
-            <form  th:action="@{/login?currentPage=} + ${param.currentPage}" class="bg-white p-5 contact-form" method="post" >
+            <form id="loginForm"  th:action="@{/login?currentPage=} + ${param.currentPage}" class="bg-white p-5 contact-form" method="post" >
             
             	<div th:if="${param.currentPage != null}">
     				<p th:text="${param.currentPage }"></p>
 				</div>
+			<!-- 	<div th:with="text1=${param.currentPage}"></div> -->
+				 <input type="hidden" id="curPage" name="curPage" value="${param.currentPage }" />
 
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Username" name="username" id ="username">
@@ -96,6 +98,8 @@
           
               <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-primary py-3 px-5">
+                <button type="button" id="Login2" name="action" onclick="myValidationFunction()" value="ignoreOrder" class="btn btn-primary py-3 px-5">Login2</button>
+      
                    <p><span>If you don't have account click</span> <a href="register">Here</a></p>
               </div>
             </form>
@@ -193,6 +197,18 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script th:inline="javascript">
+  function myValidationFunction(){
+	    
+     alert('test');
+     alert($("#curPage").val());
     
+
+     //validation success , when above mentioned if condition is false.
+     $("#loginForm").submit(); // Submit the form
+    
+    
+    }
+   </script>
   </body>
 </html>

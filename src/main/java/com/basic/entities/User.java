@@ -1,19 +1,44 @@
 package com.basic.entities;
 
+
+import java.sql.Date;
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "user")
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idUser;
+	@Column(length = 50)
 	private String username;
+	@Column(length = 100)
 	private String password;
+	@Column(length = 20)
 	private String phone;
+	@Column(length = 100)
 	private String email;
-	private String first_name;
+	@Column(length = 100, name = "first_name")
+	private String firstName;
+	@Column(length = 100, name = "last_name")
 	private String last_name;
+	@Column(length = 10)
 	private String gender;
-	private String dateOfBirth;
+	@Column(name = "date_Of_Birth")
+	private Date dateOfBirth;
+	@Column(length = 200)
 	private String address;
-	private String creat_at;
-	private String modify_at;
-	private String last_login;
+	@Column(name = "creat_at")
+	private Timestamp  creatAt;
+	@Column(name = "modify_at")
+	private Timestamp modifyAt;
+	@Column(name = "last_login")
+	private Timestamp lastLogin;
 	public int getIdUser() {
 		return idUser;
 	}
@@ -33,10 +58,10 @@ public class User {
 		this.email = email;
 	}
 	public String getFirst_name() {
-		return first_name;
+		return firstName;
 	}
 	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+		this.firstName = first_name;
 	}
 	public String getLast_name() {
 		return last_name;
@@ -56,29 +81,35 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getCreat_at() {
-		return creat_at;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setCreat_at(String creat_at) {
-		this.creat_at = creat_at;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getModify_at() {
-		return modify_at;
-	}
-	public void setModify_at(String modify_at) {
-		this.modify_at = modify_at;
-	}
-	public String getLast_login() {
-		return last_login;
-	}
-	public void setLast_login(String last_login) {
-		this.last_login = last_login;
-	}
-	public String getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+	public Timestamp getCreatAt() {
+		return creatAt;
+	}
+	public void setCreatAt(Timestamp creatAt) {
+		this.creatAt = creatAt;
+	}
+	public Timestamp getModifyAt() {
+		return modifyAt;
+	}
+	public void setModifyAt(Timestamp modifyAt) {
+		this.modifyAt = modifyAt;
+	}
+	public Timestamp getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(Timestamp lastLogin) {
+		this.lastLogin = lastLogin;
 	}
 	public String getUsername() {
 		return username;
