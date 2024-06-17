@@ -25,25 +25,14 @@ public class LoginController {
 	UserRepository userRepository;
 
 	@RequestMapping("/login")
-	public String viewHomePage(Model model) {
+	public String viewHomePage(Model model,HttpServletRequest request) {
 		User user = new User();
 		model.addAttribute("user", user);
+		System.out.println(request.getRequestURI());
+		System.out.println(request.getRequestURL());
 		return "login";
 	}
 	
-	public String checkisAlreadyLogin(User userData, String currentPage,Model model, HttpSession session) {
-		if (userData != null) {
-			session.setAttribute("user", userData);
-			if ((currentPage == null) || (currentPage.equals("null"))) {
-				return "redirect:index.html";
-			} else { 
-				return "redirect:" + currentPage;
-			}
-		}
-		
-		model.addAttribute("errorMessage", "Invalid User Or Password");
-		return "login";
-	}
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.POST)
 	public String checkLogin(@ModelAttribute("User") User user, Model model, HttpServletRequest request,@RequestParam(name="currentPage",required=false) String currentPage) {
