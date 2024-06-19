@@ -1,11 +1,13 @@
 package com.basic.controller;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -57,11 +59,18 @@ public class LoginController {
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	public String register(@ModelAttribute("User") User user, Model model, HttpServletRequest request) {
 		try {
-			userRepository.save(user);
-		} catch (Exception e) {
+			User userResult = userRepository.save(user);
+			if(userResult == null) {
+				model.addAttribute("message", "Cannot Create User");
+				return "register";
+			} else {
+				return "redirect:login";
+			}
+		} catch (DataIntegrityViolationException e) {
+			model.addAttribute("message", "Duplicate Username or Email");
 			return "register";
 		} 
-		return "redirect:login";
+		
 
 	}
 
