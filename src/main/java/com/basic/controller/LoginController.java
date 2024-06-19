@@ -28,8 +28,6 @@ public class LoginController {
 	public String viewHomePage(Model model,HttpServletRequest request) {
 		User user = new User();
 		model.addAttribute("user", user);
-		System.out.println(request.getRequestURI());
-		System.out.println(request.getRequestURL());
 		return "login";
 	}
 	
