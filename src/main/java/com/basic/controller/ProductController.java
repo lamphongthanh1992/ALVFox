@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.basic.dao.ProductDAO;
 import com.basic.entities.Product;
+import com.basic.repository.ProductRepository;
 import com.basic.utils.GetPropertiesUtils;
 import com.basic.utils.TextUtils;
 
@@ -20,10 +21,16 @@ public class ProductController {
 	@Autowired
 	private ProductDAO productDAO;
 	
+	@Autowired
+	ProductRepository productRepository;
+	
 	@RequestMapping("/allProducts")
 	public String viewHomePage(Model model) {
 		model.addAttribute("properties", properties);
-		List<Product> list = productDAO.list();
+		//Su dung ProductDap ( jdbc template)
+		//List<Product> list = productDAO.list();
+		
+		List<Product> list = productRepository.findAll();
 		
 		TextUtils textUtils = new TextUtils();
 		model.addAttribute("listProduct",list);

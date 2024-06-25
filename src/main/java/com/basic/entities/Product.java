@@ -1,11 +1,32 @@
 package com.basic.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "product")
 public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Column
 	private String name;
+	@Column
 	private int category_id;
+	@Column
 	private double price;
+	@Column
+	private int quantity;
 	
+	
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public int getId() {
 		return id;
 	}
