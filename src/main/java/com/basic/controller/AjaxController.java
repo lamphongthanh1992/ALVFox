@@ -18,7 +18,8 @@ public class AjaxController {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			return "0"; 
-		} 
+		}
+		
 		return "1";
 	}
 }
